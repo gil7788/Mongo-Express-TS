@@ -6,8 +6,8 @@ import {
   addNewPost,
   addCommentToPost,
   deletePostById
-} from '../../services/postsService';
-import { connect, closeConnection } from '../../db/connect';
+} from '../../src/services/postsService';
+import { connect, closeConnection } from '../../src/db/connect';
 
 
 // Create mock data
@@ -15,7 +15,7 @@ const mockPosts = new Array(50).fill({}).map((_, index) => ({ title: `Post ${ind
 const mockLatestPosts = mockPosts.slice(0, 3);
 
 // Mock the connect function and closeConnection function
-jest.mock('../../db/connect', () => ({
+jest.mock('../../src/db/connect', () => ({
   connect: jest.fn().mockImplementation(() => ({
     collection: () => ({
       find: jest.fn().mockImplementation(() => ({

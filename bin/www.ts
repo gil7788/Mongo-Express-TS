@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-import app from '../app'; // Adjust the import path according to your project structure
+import app from '../src/app'; // Adjust the import path according to your project structure
 import debug from 'debug';
 import http from 'http';
 import { AddressInfo } from 'net';
