@@ -1,10 +1,10 @@
 {
-  "name": "node-app",
-  "version": "0.0.0",
+  "name": "mongo-express-typescript",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "build": "tsc && npm run copy-assets",
-    "copy-assets": "cp -R public dist/public && cp -R views dist/views",
+    "copy-assets": "cp -R public dist/src/public && cp -R views dist/src/views",
     "start": "node ./dist/bin/www",
     "test": "npx jest"
   },
