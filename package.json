@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "build": "tsc && npm run copy-assets",
+    "copy-assets": "cp -R public dist/public && cp -R views dist/views",
+    "start": "node ./dist/bin/www",
     "test": "npx jest"
   },
   "dependencies": {
@@ -17,7 +19,20 @@
     "morgan": "~1.9.1"
   },
   "devDependencies": {
+    "@types/cookie-parser": "^1.4.6",
+    "@types/debug": "^4.1.12",
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.11",
+    "@types/mongodb": "^4.0.7",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^20.11.7",
     "jest": "^29.7.0",
-    "node-mocks-http": "^1.14.1"
-  }
+    "node-mocks-http": "^1.14.1",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.3.3"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  }  
 }
