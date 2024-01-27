@@ -7,7 +7,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Module dependencies.
  */
-const app_1 = __importDefault(require("../app")); // Adjust the import path according to your project structure
+const app_1 = __importDefault(require("../src/app")); // Adjust the import path according to your project structure
 const debug_1 = __importDefault(require("debug"));
 const http_1 = __importDefault(require("http"));
 const debugLog = (0, debug_1.default)('node-app:server');
