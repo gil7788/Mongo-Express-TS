@@ -1,25 +1,27 @@
-const axios = require('axios');
+import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:3000'; 
+const API_BASE_URL = 'http://localhost:3000';
 
-async function createPost(title, author) {
+export async function createPost(title: string, author: string) {
   try {
     const response = await axios.post(`${API_BASE_URL}/posts`, { title, author, date: new Date() });
     return response.data;
   } catch (error) {
     console.error('Error creating post:', error);
+    throw error;
   }
 }
 
-async function addCommentToPost(postId, comment) {
+export async function addCommentToPost(postId: string, comment: string) {
   try {
     await axios.patch(`${API_BASE_URL}/posts/comment/${postId}`, { text: comment, date: new Date() });
   } catch (error) {
     console.error('Error adding comment:', error);
+    throw error;
   }
 }
 
-async function main() {
+export async function generateData() {
   const posts = [];
   for (let i = 0; i < 10; i++) {
     const post = await createPost(`Post ${i + 1}`, `Author ${i + 1}`);
@@ -35,5 +37,3 @@ async function main() {
 
   console.log('Data generation complete.');
 }
-
-module.exports = { generateData: main}

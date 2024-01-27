@@ -2,6 +2,7 @@ const httpMocks = require('node-mocks-http');
 const { getPosts, getLatestPosts, getSinglePost, addNewPost, addCommentToPost, deletePostById } = require('../../services/postsService');
 const ObjectId = require('mongodb').ObjectId;
 const connectToDb = require('../../db/connect');
+const { closeConnection } = require('../../db/connect');
 
 // Mock the connectToDb function
 jest.mock('../../db/connect', () => {
@@ -30,7 +31,8 @@ describe('Post Service Tests', () => {
 
             await getPosts(req, res, next);
 
-            expect(res._getData()).toEqual([]);
+            const responseData = res._getData();
+            expect(responseData).toHaveLength(50);
             expect(res.statusCode).toBe(200);
         });
     });
@@ -55,8 +57,9 @@ describe('Post Service Tests', () => {
             const next = jest.fn();
 
             await getLatestPosts(req, res, next);
+            const responseData = res._getData();
 
-            expect(res._getData()).toEqual([]);
+            expect(responseData).toHaveLength(3);
             expect(res.statusCode).toBe(200);
         });
     });
@@ -95,5 +98,9 @@ describe('Post Service Tests', () => {
 
             expect(res.statusCode).toBe(200);
         });
+    });
+
+    afterAll(async () => {
+        await closeConnection();
     });
 });
