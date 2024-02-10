@@ -3,6 +3,10 @@
 This project is a MongoDB and Express.js application implemented in TypeScript. It uses Git for version control and Yarn as the package manager. This setup is designed for modern web application development with a focus on type safety and efficient data handling with MongoDB, a popular NoSQL database.
 
 ## Setup
+
+### Machine Requrements
+Ensure running machine has Mongo Database installed.
+
 ### Git
 To set up your project with version control using Git:
 
